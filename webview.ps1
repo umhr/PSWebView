@@ -7,13 +7,8 @@ Param(
 )
 
 Add-Type -Assembly System.Windows.Forms
-Add-Type -AssemblyName System.Drawing
-
 [void][reflection.assembly]::LoadFile((Join-Path $PSScriptRoot "lib\Microsoft.Web.WebView2.WinForms.dll"))
 [void][reflection.assembly]::LoadFile((Join-Path $PSScriptRoot "lib\Microsoft.Web.WebView2.Core.dll"))
-[void][reflection.assembly]::Load('System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a')
-[void][reflection.assembly]::Load('System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089')
-[System.Windows.Forms.Application]::EnableVisualStyles()
 
 $form1 = [System.Windows.Forms.Form]@{
     FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::None
@@ -25,7 +20,6 @@ $form1 = [System.Windows.Forms.Form]@{
 }
 
 $webview = [Microsoft.Web.WebView2.WinForms.WebView2]@{
-    Location   = New-Object System.Drawing.Point(0, 0)
     Name       = 'webview'
     TabIndex   = 0
     ZoomFactor = 1
